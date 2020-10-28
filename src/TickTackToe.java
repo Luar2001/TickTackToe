@@ -18,32 +18,52 @@ public class TickTackToe {
     //boolean that switches between true and false || true = player1 || false = player2
     private boolean PlayerSwitch;
 
-    public TickTackToe(int[] slots) {
+    public TickTackToe() {
 
         //starts a new game
         newGame();
 
+        turn();
+
+        //test in data
+        slots[0] = 1;
+        slots[1] = 1;
+        slots[2] = 1;
+
+        //test print of the array
+        System.out.println(Arrays.toString(slots));
+
+
         //keep playing as long as a player has not won
-        while(!playerWon()){
+        while (!playerWon()) {
 
             System.out.println("NO winner yet! ");
         }
 
-        //if a player won
-        if(playerWon()){
 
-            //game is over
-            gameOver = true;
-            System.out.println(" A player won! ");
-        }
+        gameOver = true;
 
 
 
     }
 
+    private void turn() {
+        // user input click here
+
+        //switches user
+        if(PlayerSwitch){
+            System.out.println("its player 2's turn ");
+            PlayerSwitch = false;
+        } else{
+            //change player message
+            System.out.println("its player 1's turn ");
+            PlayerSwitch = true;
+        }
+    }
+
     public void newGame() {
 
-        Arrays.fill(slots , 0); //fills the array slots with 0;
+        Arrays.fill(slots, 0); //fills the array slots with 0;
 
         gameOver = false;
 
