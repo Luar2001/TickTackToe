@@ -25,6 +25,7 @@ public class TickTackToe {
 
         turn();
 
+        // TODO: 28/10/2020 replace with a call to userInput or turn
         //test in data
         slots[0] = 1;
         slots[1] = 1;
@@ -48,7 +49,7 @@ public class TickTackToe {
     }
 
     private void turn() {
-        // user input click here
+        // TODO: 28/10/2020 User input here
 
         //switches user
         if(PlayerSwitch){
