@@ -53,23 +53,25 @@ public class TickTackToe {
         //player 1 full row check
         if(
                 //horizontal rows
-                slots[0] == 1 && slots[1] == 1 && slots[2] == 1 || //if the first horizontal row is filled with 1
-                slots[3] == 1 && slots[4] == 1 && slots[5] == 1 || //if the second horizontal row is filled with 1
-                slots[6] == 1 && slots[7] == 1 && slots[8] == 1 || //if the third horizontal row is filled with 1
+
+                (slots[0] == 1 && slots[1] == 1 && slots[2] == 1 )|| //if the first horizontal row is filled with 1
+                (slots[3] == 1 && slots[4] == 1 && slots[5] == 1 )|| //if the second horizontal row is filled with 1
+                (slots[6] == 1 && slots[7] == 1 && slots[8] == 1) || //if the third horizontal row is filled with 1
                 //vertical rows
-                slots[0] == 1 && slots[3] == 1 && slots[6] == 1 || //if the first vertical row is filled with 1
-                slots[1] == 1 && slots[4] == 1 && slots[7] == 1 || //if the second vertical row is filled with 1
-                slots[2] == 1 && slots[5] == 1 && slots[8] == 1 || //if the third vertical row is filled with 1
+                (slots[0] == 1 && slots[3] == 1 && slots[6] == 1) || //if the first vertical row is filled with 1
+                (slots[1] == 1 && slots[4] == 1 && slots[7] == 1) || //if the second vertical row is filled with 1
+                (slots[2] == 1 && slots[5] == 1 && slots[8] == 1) || //if the third vertical row is filled with 1
                 // sideways \ row
-                slots[0] == 1 && slots[4] == 1 && slots[8] == 1 || //if the row is filled with 1
+                (slots[0] == 1 && slots[4] == 1 && slots[8] == 1) || //if the row is filled with 1
                 // sideways / row
-                slots[6] == 1 && slots[4] == 1 && slots[2] == 1//if the row is filled with 1
+                (slots[6] == 1 && slots[4] == 1 && slots[2] == 1)//if the row is filled with 1
         ){
 
             //There was a 3 in a row of 1s
             return true;
         }else{
 
+            System.out.println("Player 1 has not won yet! ");
             //if there is not a 3 in a row of 1s the game will not be over
             return false;
         }
@@ -79,23 +81,24 @@ public class TickTackToe {
 
         if(
                 //horizontal rows
-                slots[0] == 2 && slots[1] == 2 && slots[2] == 2 || //if the first horizontal row is filled with 1
-                slots[3] == 2 && slots[4] == 2 && slots[5] == 2 || //if the second horizontal row is filled with 1
-                slots[6] == 2 && slots[7] == 2 && slots[8] == 2 || //if the third horizontal row is filled with 1
+                (slots[0] == 2 && slots[1] == 2 && slots[2] == 2) || //if the first horizontal row is filled with 1
+                (slots[3] == 2 && slots[4] == 2 && slots[5] == 2) || //if the second horizontal row is filled with 1
+                (slots[6] == 2 && slots[7] == 2 && slots[8] == 2) || //if the third horizontal row is filled with 1
                 //vertical rows
-                slots[0] == 2 && slots[3] == 2 && slots[6] == 2 || //if the first vertical row is filled with 1
-                slots[1] == 2 && slots[4] == 2 && slots[7] == 2 || //if the second vertical row is filled with 1
-                slots[2] == 2 && slots[5] == 2 && slots[8] == 2 || //if the third vertical row is filled with 1
+                (slots[0] == 2 && slots[3] == 2 && slots[6] == 2) || //if the first vertical row is filled with 1
+                (slots[1] == 2 && slots[4] == 2 && slots[7] == 2) || //if the second vertical row is filled with 1
+                (slots[2] == 2 && slots[5] == 2 && slots[8] == 2) || //if the third vertical row is filled with 1
                 // sideways \ row
-                slots[0] == 2 && slots[4] == 2 && slots[8] == 2 || //if the row is filled with 1
+                (slots[0] == 2 && slots[4] == 2 && slots[8] == 2) || //if the row is filled with 1
                 // sideways / row
-                slots[6] == 2 && slots[4] == 2 && slots[2] == 2//if the row is filled with 1
+                (slots[6] == 2 && slots[4] == 2 && slots[2] == 2) //if the row is filled with 1
         ){
 
             //There was a 3 in a row of 1s
             return true;
         }else{
 
+            System.out.println("Player 2 has not won yet! ");
             //if there is not a 3 in a row of 1s the game will not be over
             return false;
         }
