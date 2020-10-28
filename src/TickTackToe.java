@@ -23,10 +23,19 @@ public class TickTackToe {
         //starts a new game
         newGame();
 
+        //keep playing as long as a player has not won
+        while(!playerWon()){
 
+            System.out.println("NO winner yet! ");
+        }
 
+        //if a player won
+        if(playerWon()){
 
-
+            //game is over
+            gameOver = true;
+            System.out.println(" A player won! ");
+        }
 
 
 
@@ -88,6 +97,37 @@ public class TickTackToe {
         }else{
 
             //if there is not a 3 in a row of 1s the game will not be over
+            return false;
+        }
+    }
+
+    public boolean playerWon(){
+        //checks that only one of player2WOn and player1Won is true
+
+
+        // TODO: 28/10/2020 replace all system.out with messages
+        //if player1Won is true and player2Won is false
+        if(player1Won() && !player2Won()){
+
+            System.out.println("Player1 Won!! ");
+            // a playerWon
+            return true;
+
+        } else if(player2Won() && !player1Won()){
+
+            System.out.println("player2 Won!! ");
+           //a playerWon
+            return true;
+        } else if (player1Won() & player2Won()){
+
+            System.out.println("ERROR: both players won somehow!!! ");
+
+            // TODO: 28/10/2020 replace with whatever stops the program
+            //i want the game to end so a player won (for now)
+            return true;
+
+        } else{
+            //no one has won yet
             return false;
         }
     }
