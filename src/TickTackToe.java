@@ -8,7 +8,7 @@ import java.util.Arrays;
  * Project: TickTackToe
  * Copyright: MIT
  **/
-public class TickTackToe {
+public class TickTackToe{
 
     //int array that represents the 9 slots in a tickTackToe game
     //if the first player presses the array index of the press will be set to a value of 1 while the 2nd players to 2
@@ -43,7 +43,8 @@ public class TickTackToe {
         //keep playing as long as a player has not won
         while (!playerWon()) {
 
-            System.out.println("NO winner yet! ");
+            //temp text
+            System.out.println("Next Turn ");
         }
 
 
@@ -71,6 +72,9 @@ public class TickTackToe {
         Arrays.fill(slots, 0); //fills the array slots with 0;
 
         gameOver = false;
+
+        //calls the GUI Object
+        new GUI();
 
     }
 
