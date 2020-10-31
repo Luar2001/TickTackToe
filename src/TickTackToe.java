@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Arrays;
 
 /**
@@ -23,6 +24,10 @@ public class TickTackToe {
         //starts a new game
         newGame();
 
+        //starts at false so that turn makes it player 1;
+        PlayerSwitch = false;
+
+        //changes the tuns between the players
         turn();
 
         // TODO: 28/10/2020 replace with a call to userInput or turn
@@ -42,9 +47,8 @@ public class TickTackToe {
         }
 
 
+        //ends the game
         gameOver = true;
-
-
 
     }
 
