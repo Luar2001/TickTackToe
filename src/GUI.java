@@ -1,8 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -16,19 +14,29 @@ import java.awt.event.MouseListener;
 public class GUI extends JFrame {
 
     //booleans to keep track if a slot was clicked or not
-    private boolean box1set=false;
-    private boolean box2set=false;
-    private boolean box3set=false;
-    private boolean box4set=false;
-    private boolean box5set=false;
-    private boolean box6set=false;
-    private boolean box7set=false;
-    private boolean box8set=false;
-    private boolean box9set=false;
+    private static boolean box1set;
+    private static boolean box2set;
+    private static boolean box3set;
+    private static boolean box4set;
+    private static boolean box5set;
+    private static boolean box6set;
+    private static boolean box7set;
+    private static boolean box8set;
+    private static boolean box9set;
 
     //constructor that takes care of the swing stuff
     public GUI() {
         //frame refers to JFrame that this class extends
+
+        box1set = true;
+        box2set = true;
+        box3set = true;
+        box4set = true;
+        box5set = true;
+        box6set = true;
+        box7set = true;
+        box8set = true;
+        box9set = true;
 
         //creates a JPanel object
         JPanel panel = new JPanel();
@@ -112,8 +120,11 @@ public class GUI extends JFrame {
         //the box has an EtchedBorder
         box1.setBorder(eBorder);
 
+        box1.setHorizontalTextPosition(SwingConstants.CENTER);
+        box1.setVerticalTextPosition(SwingConstants.CENTER);
 
-        if(!box1set) {
+
+        if(box1set) {
             box1.addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
@@ -146,7 +157,7 @@ public class GUI extends JFrame {
 
                     }
 
-                    box1set = true;
+                    box1set = false;
                 }
 
                 @Override
@@ -181,7 +192,7 @@ public class GUI extends JFrame {
         //the box has an EtchedBorder
         box2.setBorder(eBorder);
 
-        if(!box2set) {
+        if(box2set) {
             box2.addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
@@ -214,7 +225,7 @@ public class GUI extends JFrame {
 
                     }
 
-                    box2set = true;
+                    box2set = false;
 
                 }
 
@@ -250,7 +261,7 @@ public class GUI extends JFrame {
         //the box has an EtchedBorder
         box3.setBorder(eBorder);
 
-        if(!box3set) {
+        if(box3set) {
             box3.addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
@@ -284,7 +295,7 @@ public class GUI extends JFrame {
                     }
 
 
-                    box3set = true;
+                    box3set = false;
 
                 }
 
@@ -321,7 +332,7 @@ public class GUI extends JFrame {
         box4.setBorder(eBorder);
 
 
-        if(!box4set) {
+        if(box4set) {
             box4.addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
@@ -354,7 +365,7 @@ public class GUI extends JFrame {
                     }
 
 
-                    box4set = true;
+                    box4set = false;
 
                 }
 
@@ -390,7 +401,7 @@ public class GUI extends JFrame {
         //the box has an EtchedBorder
         box5.setBorder(eBorder);
 
-        if(!box5set) {
+        if(box5set) {
             box5.addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
@@ -422,7 +433,7 @@ public class GUI extends JFrame {
 
                     }
 
-                    box5set = true;
+                    box5set = false;
 
 
                 }
@@ -459,7 +470,7 @@ public class GUI extends JFrame {
         //the box has an EtchedBorder
         box6.setBorder(eBorder);
 
-        if(!box6set) {
+        if(box6set) {
             box6.addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
@@ -492,7 +503,7 @@ public class GUI extends JFrame {
                     }
 
 
-                    box6set = true;
+                    box6set = false;
 
                 }
 
@@ -529,7 +540,7 @@ public class GUI extends JFrame {
         //the box has an EtchedBorder
         box7.setBorder(eBorder);
 
-        if(!box7set) {
+        if(box7set) {
             box7.addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
@@ -562,7 +573,7 @@ public class GUI extends JFrame {
                     }
 
 
-                    box7set = true;
+                    box7set = false;
 
                 }
 
@@ -598,7 +609,7 @@ public class GUI extends JFrame {
         //the box has an EtchedBorder
         box8.setBorder(eBorder);
 
-        if(!box8set) {
+        if(box8set) {
             box8.addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
@@ -630,7 +641,7 @@ public class GUI extends JFrame {
 
                     }
 
-                    box8set = true;
+                    box8set = false;
 
 
                 }
@@ -667,7 +678,7 @@ public class GUI extends JFrame {
         //the box has an EtchedBorder
         box9.setBorder(eBorder);
 
-        if(!box9set) {
+        if(box9set) {
             box9.addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
@@ -699,7 +710,7 @@ public class GUI extends JFrame {
 
                     }
 
-                    box9set = true;
+                    box9set = false;
 
 
                 }
@@ -742,42 +753,11 @@ public class GUI extends JFrame {
         //adds the dimensions of the button
         reset.setPreferredSize(resetDim);
 
-        reset.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        reset.addActionListener(e -> {
 
-                text.setText("New Game! : Player1's Turn ");
+            text.setText("New Game! : Player1's Turn ");
 
-                //Sets all the box set to false again;
-                box1set = false;
-                box2set = false;
-                box3set = false;
-                box4set = false;
-                box5set = false;
-                box6set = false;
-                box7set = false;
-                box8set = false;
-                box9set = false;
-
-                //Sets the text for all the boxes to blank
-                box1.setText(null);
-                box2.setText(null);
-                box3.setText(null);
-                box4.setText(null);
-                box5.setText(null);
-                box6.setText(null);
-                box7.setText(null);
-                box8.setText(null);
-                box9.setText(null);
-
-
-                TickTackToe.newGame();
-            }
-        });
-
-        if(TickTackToe.player2Won() && TickTackToe.player1Won()){
-
-
-            //turns all true (so that the players can't change anything on the board
+            //Sets all the box set to true again;
             box1set = true;
             box2set = true;
             box3set = true;
@@ -788,9 +768,20 @@ public class GUI extends JFrame {
             box8set = true;
             box9set = true;
 
+            //Sets the text for all the boxes to blank
+            box1.setText(null);
+            box2.setText(null);
+            box3.setText(null);
+            box4.setText(null);
+            box5.setText(null);
+            box6.setText(null);
+            box7.setText(null);
+            box8.setText(null);
+            box9.setText(null);
 
 
-        }
+            TickTackToe.newGame();
+        });
 
 
 
@@ -803,6 +794,33 @@ public class GUI extends JFrame {
         //adds panel to panel 2 (to get the reset button at the button
         panel2.add(panel);
         pack();
+
+    }
+
+
+    public static boolean playerWon(){
+
+        if(TickTackToe.playerWon()){
+
+            //turns all false (so that the players can't change anything on the board
+            box1set = false;
+            box2set = false;
+            box3set = false;
+            box4set = false;
+            box5set = false;
+            box6set = false;
+            box7set = false;
+            box8set = false;
+            box9set = false;
+
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+
 
     }
 }

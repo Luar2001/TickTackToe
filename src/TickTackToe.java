@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.util.Arrays;
 
 /**
@@ -12,40 +11,26 @@ public class TickTackToe{
 
     //int array that represents the 9 slots in a tickTackToe game
     //if the first player presses the array index of the press will be set to a value of 1 while the 2nd players to 2
-    private final int[] slots = new int[9];
+    public static final int[] slots = new int[9];
 
-    private boolean gameOver;
+    public static boolean gameOver;
 
     //boolean that switches between true and false || true = player1 || false = player2
-    private boolean PlayerSwitch;
+    protected static boolean PlayerSwitch;
 
     public TickTackToe() {
 
-        //starts a new game
-        newGame();
+        //calls the GUI Object
+        new GUI();
 
         //starts at false so that turn makes it player 1;
         PlayerSwitch = false;
 
-        //changes the tuns between the players
-        turn();
+        //starts a new game
+        newGame();
 
         // TODO: 28/10/2020 replace with a call to userInput or turn
-        //test in data
-        slots[0] = 1;
-        slots[1] = 1;
-        slots[2] = 1;
 
-        //test print of the array
-        System.out.println(Arrays.toString(slots));
-
-
-        //keep playing as long as a player has not won
-        while (!playerWon()) {
-
-            //temp text
-            System.out.println("Next Turn ");
-        }
 
 
         //ends the game
@@ -53,32 +38,36 @@ public class TickTackToe{
 
     }
 
-    private void turn() {
-        // TODO: 28/10/2020 User input here
+    public static void newGame() {
 
-        //switches user
-        if(PlayerSwitch){
-            System.out.println("its player 2's turn ");
-            PlayerSwitch = false;
-        } else{
-            //change player message
-            System.out.println("its player 1's turn ");
-            PlayerSwitch = true;
-        }
-    }
-
-    public void newGame() {
+        //test Print of array before it gets 0d
+        System.out.println(Arrays.toString(slots));
 
         Arrays.fill(slots, 0); //fills the array slots with 0;
 
+        //Sets gameOver to false aka a new game
         gameOver = false;
 
-        //calls the GUI Object
-        new GUI();
+        //test print of the array
+        System.out.println(Arrays.toString(slots));
+
+        //keep playing as long as a player has not won
+
+        while (!GUI.playerWon()){
+
+            if (playerWon()){
+
+                gameOver = true;
+
+                //breaks the loop;
+                break;
+
+            }
+        }
 
     }
 
-    public boolean player1Won(){
+    public static boolean player1Won(){
         //player 1 full row check
         if(
                 //horizontal rows
@@ -101,11 +90,12 @@ public class TickTackToe{
         }else{
 
             System.out.println("Player 1 has not won yet! ");
+
             //if there is not a 3 in a row of 1s the game will not be over
             return false;
         }
     }
-    public boolean player2Won(){
+    public static boolean player2Won(){
         //player2 full row check
 
         if(
@@ -133,7 +123,7 @@ public class TickTackToe{
         }
     }
 
-    public boolean playerWon(){
+    public static boolean playerWon(){
         //checks that only one of player2WOn and player1Won is true
 
 
@@ -163,5 +153,4 @@ public class TickTackToe{
             return false;
         }
     }
-
 }
