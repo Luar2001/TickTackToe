@@ -96,6 +96,9 @@ public class GUI extends JFrame {
 
             //actually adds the JLabel object to the array
             box[i] = new JLabel();
+
+            box[i].setHorizontalTextPosition(JLabel.CENTER);
+            box[i].setVerticalAlignment(JLabel.CENTER);
         }
 
         //Sets the text for all the boxes to blank
@@ -123,6 +126,8 @@ public class GUI extends JFrame {
 
                                 //sets the text to O if its player1
                                 box[finalI].setText("O");
+
+
 
                                 //sets the value in the array to a 1
                                 TickTackToe.slots[finalI] = 1;
@@ -198,9 +203,6 @@ public class GUI extends JFrame {
                 jLabel.setText(null);
             }
 
-            Arrays.fill(box, null);
-
-
             TickTackToe.newGame();
         });
 
@@ -234,12 +236,6 @@ public class GUI extends JFrame {
 
             //turns all false (so that the players can't change anything on the board
             Arrays.fill(boxSet, false);
-
-            if(TickTackToe.player1Won()){
-                text.setText("Player 1 Won! ");
-            } else if(TickTackToe.player2Won()){
-                text.setText("Player 2 Won! ");
-            }
 
             return true;
 
