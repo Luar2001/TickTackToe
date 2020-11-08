@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -12,43 +13,36 @@ import java.awt.event.MouseListener;
  * Copyright: MIT
  **/
 public class GUI extends JFrame {
+    //frame refers to JFrame that this class extends
+    //creates a JPanel object
+    private JPanel panel = new JPanel();
+
+    private JPanel panel2 = new JPanel();
+
+    //Creates a text at the top of the window
+    private final JLabel text = new JLabel();
+
+    //dimensions in the layout
+    private Dimension textDim = new Dimension(100,30);
+
+    //border for the boxes
+    private final EtchedBorder eBorder = new EtchedBorder();
+
+    //Creates 9 JLabel Boxes that the games is played in.
+    private final JLabel[] box = new JLabel[9];
 
     //booleans to keep track if a slot was clicked or not
-    private static boolean box1set;
-    private static boolean box2set;
-    private static boolean box3set;
-    private static boolean box4set;
-    private static boolean box5set;
-    private static boolean box6set;
-    private static boolean box7set;
-    private static boolean box8set;
-    private static boolean box9set;
+    private static final boolean[] boxSet = new boolean[9]; //switched out the 9 boxSet booleans with a array of booleans
+
 
     //constructor that takes care of the swing stuff
     public GUI() {
-        //frame refers to JFrame that this class extends
-
-        box1set = true;
-        box2set = true;
-        box3set = true;
-        box4set = true;
-        box5set = true;
-        box6set = true;
-        box7set = true;
-        box8set = true;
-        box9set = true;
-
-        //creates a JPanel object
-        JPanel panel = new JPanel();
-
-        JPanel panel2 = new JPanel();
 
         //sets the layout of panel 2 to a grid with 3 elements
         panel.setLayout(new GridLayout(3,3));
 
         Dimension panel2Dim = new Dimension(500,500);
         panel2.setPreferredSize(panel2Dim);
-
 
         //sets the grid to 3/3 so that there is a grid slot for each slot in the TickTackToe games
         panel2.setLayout(new BorderLayout());
@@ -66,13 +60,8 @@ public class GUI extends JFrame {
         setTitle("TickTackToe made with Swing");
 
 
-
         //sets tje blank space around panel
         panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 30, 0));
-
-
-
-
 
         //sets resizable to false (aka you can't resize the window)
         setResizable(false);
@@ -85,22 +74,10 @@ public class GUI extends JFrame {
 
 
 
+        //text at the top of the panel
 
-        //border for the boxes
-        EtchedBorder eBorder = new EtchedBorder();
-
-
-
-        // BOXES
-
-        //Creates a text at the top of the window
-        JLabel text = new JLabel();
-
-        //dimensions in the layout
-        Dimension textDim = new Dimension(100,30);
-
+        //Sets the dimensions of text
         text.setPreferredSize(textDim);
-
 
         if(TickTackToe.PlayerSwitch) {
             //changes the text at the top of the screen to say witch players turn it is
@@ -110,29 +87,27 @@ public class GUI extends JFrame {
             text.setText("Player2's Turn ");
         }
 
-        //adds text to panel2
-        panel2.add(text,BorderLayout.NORTH);
 
+
+
+        //BOXES
+
+        //the boxes have EtchedBorders
+        for(int i = 0; i<9; i++){
+            box[i].setBorder(eBorder);
+        }
 
         //Box1
-        JLabel box1 = new JLabel();
 
-        //the box has an EtchedBorder
-        box1.setBorder(eBorder);
-
-        box1.setHorizontalTextPosition(SwingConstants.CENTER);
-        box1.setVerticalTextPosition(SwingConstants.CENTER);
-
-
-        if(box1set) {
-            box1.addMouseListener(new MouseListener() {
+        if(boxSet[0]) {
+            box[0].addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
 
                     if (TickTackToe.PlayerSwitch) {
 
                         //sets the text to O if its player1
-                        box1.setText("O");
+                        box[0].setText("O");
 
                         //sets the value in the array to a 1
                         TickTackToe.slots[0] = 1;
@@ -145,7 +120,7 @@ public class GUI extends JFrame {
                     } else {
 
                         //sets the text to X if its player2
-                        box1.setText("X");
+                        box[0].setText("X");
 
                         //sets the value in the array to a 2
                         TickTackToe.slots[0] = 2;
@@ -157,7 +132,7 @@ public class GUI extends JFrame {
 
                     }
 
-                    box1set = false;
+                    boxSet[0] = false;
                 }
 
                 @Override
@@ -182,25 +157,17 @@ public class GUI extends JFrame {
             });
         }
 
-        //adds the box to the panel
-        panel.add(box1);
-
-
         //Box2
-        JLabel box2 = new JLabel();
 
-        //the box has an EtchedBorder
-        box2.setBorder(eBorder);
-
-        if(box2set) {
-            box2.addMouseListener(new MouseListener() {
+        if(boxSet[1]) {
+            box[1].addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
 
                     if (TickTackToe.PlayerSwitch) {
 
                         //sets the text to O if its player1
-                        box2.setText("O");
+                        box[1].setText("O");
 
                         //sets the value in the array to a 1
                         TickTackToe.slots[1] = 1;
@@ -213,7 +180,7 @@ public class GUI extends JFrame {
                     } else {
 
                         //sets the text to X if its player2
-                        box2.setText("X");
+                        box[1].setText("X");
 
                         //sets the value in the array to a 2
                         TickTackToe.slots[1] = 2;
@@ -225,7 +192,7 @@ public class GUI extends JFrame {
 
                     }
 
-                    box2set = false;
+                    boxSet[1] = false;
 
                 }
 
@@ -251,25 +218,16 @@ public class GUI extends JFrame {
             });
         }
 
-        //adds the box to the panel
-        panel.add(box2);
 
-
-        //Box3
-        JLabel box3 = new JLabel();
-
-        //the box has an EtchedBorder
-        box3.setBorder(eBorder);
-
-        if(box3set) {
-            box3.addMouseListener(new MouseListener() {
+        if(boxSet[2]) {
+            box[2].addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
 
                     if (TickTackToe.PlayerSwitch) {
 
                         //sets the text to O if its player1
-                        box3.setText("O");
+                        box[2].setText("O");
 
                         //sets the value in the array to a 1
                         TickTackToe.slots[2] = 1;
@@ -282,7 +240,7 @@ public class GUI extends JFrame {
                     } else {
 
                         //sets the text to X if its player2
-                        box3.setText("X");
+                        box[2].setText("X");
 
                         //sets the value in the array to a 2
                         TickTackToe.slots[2] = 2;
@@ -295,7 +253,7 @@ public class GUI extends JFrame {
                     }
 
 
-                    box3set = false;
+                    boxSet[2] = false;
 
                 }
 
@@ -321,25 +279,14 @@ public class GUI extends JFrame {
             });
         }
 
-        //adds the box to the panel
-        panel.add(box3);
-
-
-        //Box4
-        JLabel box4 = new JLabel();
-
-        //the box has an EtchedBorder
-        box4.setBorder(eBorder);
-
-
-        if(box4set) {
-            box4.addMouseListener(new MouseListener() {
+        if(boxSet[3]) {
+            box[3].addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
                     if (TickTackToe.PlayerSwitch) {
 
                         //sets the text to O if its player1
-                        box4.setText("O");
+                        box[3].setText("O");
 
                         //sets the value in the array to a 1
                         TickTackToe.slots[3] = 1;
@@ -352,7 +299,7 @@ public class GUI extends JFrame {
                     } else {
 
                         //sets the text to X if its player2
-                        box4.setText("X");
+                        box[3].setText("X");
 
                         //sets the value in the array to a 2
                         TickTackToe.slots[3] = 2;
@@ -365,7 +312,7 @@ public class GUI extends JFrame {
                     }
 
 
-                    box4set = false;
+                    boxSet[3] = false;
 
                 }
 
@@ -391,24 +338,14 @@ public class GUI extends JFrame {
             });
         }
 
-        //adds the box to the panel
-        panel.add(box4);
-
-
-        //Box5
-        JLabel box5 = new JLabel();
-
-        //the box has an EtchedBorder
-        box5.setBorder(eBorder);
-
-        if(box5set) {
-            box5.addMouseListener(new MouseListener() {
+        if(boxSet[4]) {
+            box[4].addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
                     if (TickTackToe.PlayerSwitch) {
 
                         //sets the text to O if its player1
-                        box5.setText("O");
+                        box[4].setText("O");
 
                         //sets the value in the array to a 1
                         TickTackToe.slots[4] = 1;
@@ -421,7 +358,7 @@ public class GUI extends JFrame {
                     } else {
 
                         //sets the text to X if its player2
-                        box5.setText("X");
+                        box[4].setText("X");
 
                         //sets the value in the array to a 2
                         TickTackToe.slots[4] = 2;
@@ -433,7 +370,7 @@ public class GUI extends JFrame {
 
                     }
 
-                    box5set = false;
+                    boxSet[4] = false;
 
 
                 }
@@ -460,24 +397,14 @@ public class GUI extends JFrame {
             });
         }
 
-        //adds the box to the panel
-        panel.add(box5);
-
-
-        //Box6
-        JLabel box6 = new JLabel();
-
-        //the box has an EtchedBorder
-        box6.setBorder(eBorder);
-
-        if(box6set) {
-            box6.addMouseListener(new MouseListener() {
+        if(boxSet[5]) {
+            box[5].addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
                     if (TickTackToe.PlayerSwitch) {
 
                         //sets the text to O if its player1
-                        box6.setText("O");
+                        box[5].setText("O");
 
                         //sets the value in the array to a 1
                         TickTackToe.slots[5] = 1;
@@ -490,7 +417,7 @@ public class GUI extends JFrame {
                     } else {
 
                         //sets the text to X if its player2
-                        box6.setText("X");
+                        box[5].setText("X");
 
                         //sets the value in the array to a 2
                         TickTackToe.slots[5] = 2;
@@ -503,7 +430,7 @@ public class GUI extends JFrame {
                     }
 
 
-                    box6set = false;
+                    boxSet[5] = false;
 
                 }
 
@@ -529,25 +456,14 @@ public class GUI extends JFrame {
             });
         }
 
-
-        //adds the box to the panel
-        panel.add(box6);
-
-
-        //Box7
-        JLabel box7 = new JLabel();
-
-        //the box has an EtchedBorder
-        box7.setBorder(eBorder);
-
-        if(box7set) {
-            box7.addMouseListener(new MouseListener() {
+        if(boxSet[6]) {
+            box[6].addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
                     if (TickTackToe.PlayerSwitch) {
 
                         //sets the text to O if its player1
-                        box7.setText("O");
+                        box[6].setText("O");
 
                         //sets the value in the array to a 1
                         TickTackToe.slots[6] = 1;
@@ -560,7 +476,7 @@ public class GUI extends JFrame {
                     } else {
 
                         //sets the text to X if its player2
-                        box7.setText("X");
+                        box[6].setText("X");
 
                         //sets the value in the array to a 2
                         TickTackToe.slots[6] = 2;
@@ -573,7 +489,7 @@ public class GUI extends JFrame {
                     }
 
 
-                    box7set = false;
+                    boxSet[6] = false;
 
                 }
 
@@ -599,24 +515,14 @@ public class GUI extends JFrame {
             });
         }
 
-        //adds the box to the panel
-        panel.add(box7);
-
-
-        //Box8
-        JLabel box8 = new JLabel();
-
-        //the box has an EtchedBorder
-        box8.setBorder(eBorder);
-
-        if(box8set) {
-            box8.addMouseListener(new MouseListener() {
+        if(boxSet[7]) {
+            box[7].addMouseListener(new MouseListener() {
                 public void mouseClicked(MouseEvent e) {
 
                     if (TickTackToe.PlayerSwitch) {
 
                         //sets the text to O if its player1
-                        box8.setText("O");
+                        box[7].setText("O");
 
                         //sets the value in the array to a 1
                         TickTackToe.slots[7] = 1;
@@ -629,7 +535,7 @@ public class GUI extends JFrame {
                     } else {
 
                         //sets the text to X if its player2
-                        box8.setText("X");
+                        box[7].setText("X");
 
                         //sets the value in the array to a 2
                         TickTackToe.slots[7] = 2;
@@ -641,7 +547,7 @@ public class GUI extends JFrame {
 
                     }
 
-                    box8set = false;
+                    boxSet[7] = false;
 
 
                 }
@@ -668,77 +574,8 @@ public class GUI extends JFrame {
             });
         }
 
-        //adds the box to the panel
-        panel.add(box8);
 
-
-        //Box9
-        JLabel box9 = new JLabel();
-
-        //the box has an EtchedBorder
-        box9.setBorder(eBorder);
-
-        if(box9set) {
-            box9.addMouseListener(new MouseListener() {
-                public void mouseClicked(MouseEvent e) {
-
-                    if (TickTackToe.PlayerSwitch) {
-
-                        //sets the text to O if its player1
-                        box9.setText("O");
-
-                        //sets the value in the array to a 1
-                        TickTackToe.slots[8] = 1;
-
-                        // TODO: 01/11/2020 block additional user input until next new game
-
-                        //Switches player turn
-                        TickTackToe.PlayerSwitch = false;
-
-                    } else {
-
-                        //sets the text to X if its player2
-                        box9.setText("X");
-
-                        //sets the value in the array to a 2
-                        TickTackToe.slots[8] = 2;
-
-                        // TODO: 01/11/2020 block additional user input until next new game
-
-                        //Switches player turn
-                        TickTackToe.PlayerSwitch = true;
-
-                    }
-
-                    box9set = false;
-
-
-                }
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-
-                }
-
-                @Override
-                public void mouseReleased(MouseEvent e) {
-
-                }
-
-                @Override
-                public void mouseEntered(MouseEvent e) {
-
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-
-                }
-            });
-        }
-
-        //adds the box to the panel
-        panel.add(box9);
+        box[8].addMouseListener(new BoxClicker());
 
 
 
@@ -758,38 +595,34 @@ public class GUI extends JFrame {
             text.setText("New Game! : Player1's Turn ");
 
             //Sets all the box set to true again;
-            box1set = true;
-            box2set = true;
-            box3set = true;
-            box4set = true;
-            box5set = true;
-            box6set = true;
-            box7set = true;
-            box8set = true;
-            box9set = true;
+            for(int i = 0; i<9; i++){
+                boxSet[i] = true;
+            }
 
             //Sets the text for all the boxes to blank
-            box1.setText(null);
-            box2.setText(null);
-            box3.setText(null);
-            box4.setText(null);
-            box5.setText(null);
-            box6.setText(null);
-            box7.setText(null);
-            box8.setText(null);
-            box9.setText(null);
+            for(int i = 0; i<9; i++){
+                box[i].setText(null);
+            }
 
 
             TickTackToe.newGame();
         });
 
 
+        //ADDS ALL TO THE PANELs
 
+
+        //adds text to panel2
+        panel2.add(text,BorderLayout.NORTH);
+
+
+        //adds the boxes to the panel
+        for(int i = 0; i<9; i++) {
+            panel.add(box[i]);
+        }
 
         //adds reset to the bottom of the frame
         panel2.add(reset,BorderLayout.SOUTH);
-
-
 
         //adds panel to panel 2 (to get the reset button at the button
         panel2.add(panel);
@@ -803,15 +636,9 @@ public class GUI extends JFrame {
         if(TickTackToe.playerWon()){
 
             //turns all false (so that the players can't change anything on the board
-            box1set = false;
-            box2set = false;
-            box3set = false;
-            box4set = false;
-            box5set = false;
-            box6set = false;
-            box7set = false;
-            box8set = false;
-            box9set = false;
+            for(int i = 0; i<9;i++){
+                boxSet[i] =false;
+            }
 
 
             return true;
@@ -822,5 +649,41 @@ public class GUI extends JFrame {
         }
 
 
+    }
+}
+
+class BoxClicker extends MouseAdapter {
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+        if (TickTackToe.PlayerSwitch) {
+
+            //sets the text to O if its player1
+           // setText("O");
+
+            //sets the value in the array to a 1
+            TickTackToe.slots[8] = 1;
+
+            // TODO: 01/11/2020 block additional user input until next new game
+
+            //Switches player turn
+            TickTackToe.PlayerSwitch = false;
+
+        } else {
+
+            //sets the text to X if its player2
+           // setText("X");
+
+            //sets the value in the array to a 2
+            TickTackToe.slots[8] = 2;
+
+            // TODO: 01/11/2020 block additional user input until next new game
+
+            //Switches player turn
+            TickTackToe.PlayerSwitch = true;
+
+        }
     }
 }
