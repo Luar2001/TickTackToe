@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -55,7 +56,7 @@ public class TickTackToe{
 
         while (!GUI.playerWon()){
 
-            if (playerWon()){
+            if (!playerWon()){
 
                 gameOver = true;
 
@@ -89,8 +90,8 @@ public class TickTackToe{
             return true;
         }else{
 
-            System.out.println("Player 1 has not won yet! ");
 
+            System.out.println("1");
             //if there is not a 3 in a row of 1s the game will not be over
             return false;
         }
@@ -117,7 +118,7 @@ public class TickTackToe{
             return true;
         }else{
 
-            System.out.println("Player 2 has not won yet! ");
+            System.out.println("2");
             //if there is not a 3 in a row of 1s the game will not be over
             return false;
         }
@@ -140,7 +141,7 @@ public class TickTackToe{
             System.out.println("player2 Won!! ");
            //a playerWon
             return true;
-        } else if (player1Won() & player2Won()){
+        } else if (player1Won() & player2Won()) {
 
             System.out.println("ERROR: both players won somehow!!! ");
 
