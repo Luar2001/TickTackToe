@@ -69,8 +69,6 @@ public class GUI extends JFrame {
 
         //text at the top of the panel
 
-
-
         //dimensions for the text in the layout
         Dimension textDim = new Dimension(100, 30);
 
@@ -111,7 +109,7 @@ public class GUI extends JFrame {
             }
 
         } catch (Exception e){
-            System.out.println("ERROR: " + e.getMessage() + " ! ");
+            System.out.println("ERROR: " + Arrays.toString(e.getStackTrace()) + " ! ");
         }
 
         for (int i = 0; i < box.length; i++) {
@@ -120,7 +118,7 @@ public class GUI extends JFrame {
                 box[i].addMouseListener(new MouseListener() {
                     public void mouseClicked(MouseEvent e) {
 
-                        if (boxSet[finalI]) {
+                        if (boxSet[finalI]) { //blocks additional user input if the slot is already set.
 
                             if (TickTackToe.PlayerSwitch) {
 
@@ -132,8 +130,6 @@ public class GUI extends JFrame {
                                 //sets the value in the array to a 1
                                 TickTackToe.slots[finalI] = 1;
 
-                                // TODO: 01/11/2020 block additional user input until next new game
-
                                 //Switches player turn
                                 TickTackToe.PlayerSwitch = false;
 
@@ -144,8 +140,6 @@ public class GUI extends JFrame {
 
                                 //sets the value in the array to a 2
                                 TickTackToe.slots[finalI] = 2;
-
-                                // TODO: 01/11/2020 block additional user input until next new game
 
                                 //Switches player turn
                                 TickTackToe.PlayerSwitch = true;
@@ -178,7 +172,7 @@ public class GUI extends JFrame {
                     }
                 });
             } catch (Exception a) {
-                System.out.println("ERROR: " + a.getMessage() + " ! ");
+                System.out.println("ERROR: " + Arrays.toString(a.getStackTrace()) + " ! ");
             }
         }
 

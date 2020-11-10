@@ -123,30 +123,56 @@ public class TickTackToe {
 
     public static boolean playerWon() {
         //checks that only one of player2WOn and player1Won is true
-        // TODO: 28/10/2020 replace all system.out with messages or text.setText 's
         //if player1Won is true and player2Won is false
         if (player1Won() && !player2Won()) {
 
-            System.out.println("Player1 Won!! ");
+            //System.out.println("Player1 Won!! ");
+            GUI.text.setText("Player 1 WON! ");
             // a playerWon
             return true;
 
         } else if (player2Won() && !player1Won()) {
 
-            System.out.println("player2 Won!! ");
+            //System.out.println("player2 Won!! ");
+            GUI.text.setText("Player 2 WON! ");
             //a playerWon
             return true;
         } else if (player1Won() & player2Won()) {
 
-            System.out.println("ERROR: both players won somehow!!! ");
+            //System.out.println("ERROR: both players won somehow!!! ");
+            GUI.text.setText("Both players won somehow!!! That's not supposed to happen! ");
 
             //i want the game to end so a player won (for now)
             return true;
+        }else if(!player1Won() && !player2Won() && !contains(slots, 0)){
 
+            //System.out.println("There was a Draw! ");
+            GUI.text.setText("There was a Draw! ");
+            return true;
         } else {
             //no one has won yet
             return false;
         }
+    }
+
+    public static boolean contains(int[] nbrArray, int number){
+        //checks if a specific number is in the array
+        boolean found = false;//boolean that keeps track if the number is in the array
+
+        // for loop that checks if the number is in the array
+        for(int nAr : nbrArray){
+            if(nAr == number ){
+
+                found = true;
+
+                break;//breaks the loop
+            }
+        }
+
+        //returns true or false
+        return found;
+
+
     }
 
 }
