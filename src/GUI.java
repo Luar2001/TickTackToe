@@ -130,7 +130,7 @@ public class GUI extends JFrame {
                                 box[finalI].setVerticalAlignment(SwingConstants.CENTER);
 
                                 //Sets the font & size of the O
-                                box[finalI].setFont(new Font("Serif",Font.PLAIN,100));
+                                box[finalI].setFont(new Font("Arial",Font.PLAIN,100));
 
                                 //sets the value in the array to a 1
                                 TickTackToe.slots[finalI] = 1;
@@ -148,7 +148,7 @@ public class GUI extends JFrame {
                                 box[finalI].setVerticalAlignment(SwingConstants.CENTER);
 
                                 //Sets the font & size of the X
-                                box[finalI].setFont(new Font("Serif",Font.PLAIN,100));
+                                box[finalI].setFont(new Font("Arial",Font.PLAIN,100));
 
                                 //sets the value in the array to a 2
                                 TickTackToe.slots[finalI] = 2;
