@@ -125,7 +125,12 @@ public class GUI extends JFrame {
                                 //sets the text to O if its player1
                                 box[finalI].setText("O");
 
+                                //sets the alignment of the O to the middle
+                                box[finalI].setHorizontalAlignment(SwingConstants.CENTER);
+                                box[finalI].setVerticalAlignment(SwingConstants.CENTER);
 
+                                //Sets the font & size of the O
+                                box[finalI].setFont(new Font("Serif",Font.PLAIN,100));
 
                                 //sets the value in the array to a 1
                                 TickTackToe.slots[finalI] = 1;
@@ -137,6 +142,13 @@ public class GUI extends JFrame {
 
                                 //sets the text to X if its player2
                                 box[finalI].setText("X");
+
+                                //sets the alignment of the X to the middle
+                                box[finalI].setHorizontalAlignment(SwingConstants.CENTER);
+                                box[finalI].setVerticalAlignment(SwingConstants.CENTER);
+
+                                //Sets the font & size of the X
+                                box[finalI].setFont(new Font("Serif",Font.PLAIN,100));
 
                                 //sets the value in the array to a 2
                                 TickTackToe.slots[finalI] = 2;
