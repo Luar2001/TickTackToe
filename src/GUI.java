@@ -75,12 +75,15 @@ public class GUI extends JFrame {
         //Sets the dimensions of text
         text.setPreferredSize(textDim);
 
+        //sets text font and size
+        text.setFont(new Font("Arial",Font.BOLD,25));
+
         if (TickTackToe.PlayerSwitch) {
             //changes the text at the top of the screen to say witch players turn it is
-            text.setText("Player1's Turn ");
+            text.setText("Player 1's Turn ");
         } else {
             //changes the text at the top of the screen to say witch players turn it is
-            text.setText("Player2's Turn ");
+            text.setText("Player 2's Turn ");
         }
 
 

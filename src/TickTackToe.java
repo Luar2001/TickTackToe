@@ -16,15 +16,12 @@ public class TickTackToe {
     public static boolean gameOver;
 
     //boolean that switches between true and false || true = player1 || false = player2
-    protected static boolean PlayerSwitch;
+    protected static boolean PlayerSwitch = true;
 
     public TickTackToe() {
 
         //calls the GUI Object
         new GUI();
-
-        //starts at false so that turn makes it player 1;
-        PlayerSwitch = false;
 
         //starts a new game
         newGame();
